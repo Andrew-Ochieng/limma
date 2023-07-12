@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaBible, FaMdb } from "react-icons/fa";
 import ProductList from "./ProductList";
 
+
 const Products = ({products}) => {
     const [search, setSearch] = useState('')
 
