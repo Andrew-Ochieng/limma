@@ -12,7 +12,6 @@ const ShopHero = () => {
                     </div>
                 </div>
             </div>
-            <p></p>
 
         </>
      );
