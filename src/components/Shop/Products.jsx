@@ -12,7 +12,7 @@ const Products = ({products}) => {
 
     const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(search.toLowerCase()))
 
-    console.log(filteredProducts)
+    // console.log(filteredProducts)
 
     return ( 
         <>
@@ -39,7 +39,7 @@ const Products = ({products}) => {
                     </form>
                 </div>
                 <div>
-                    <ProductList products={products} />
+                    <ProductList filteredProducts={filteredProducts} />
                 </div>
             </div>
         </>

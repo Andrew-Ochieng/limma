@@ -11,7 +11,7 @@ const UseFetch = (url) => {
         .then((res) => {
             if (res.status === 200) {
                 const items = res.data
-                console.log(items)
+                // console.log(items)
                 setData(items)
                 setLoading(false)
                 setError(false)

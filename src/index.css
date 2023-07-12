@@ -2,3 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer components {
+  .container-title {
+      @apply font-semibold md:text-2xl text-xl text-gray-800
+  }
+
+  .content-title {
+      @apply font-medium md:text-lg mt-4 text-gray-700
+  }
+
+  .form-container {
+      @apply flex flex-col items-start space-y-4
+  }
+
+  .profile-container {
+      @apply grid grid-cols-1 md:gap-16 gap-8 
+  }
+
+  .profile-card {
+      @apply grid md:grid-cols-2 bg-gradient-to-r from-green-300 to-green-400  md:p-8 p-4 rounded-xl
+  }
+
+  /* .profile-image {
+      @apply  
+  } */
+
+  .avatar {
+      @apply md:w-72 md:h-72 w-56 h-56 rounded-full
+  }
+
+  .profile-content {
+      @apply space-y-4
+  }
+
+  .card-container {
+    @apply grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gap-4 px-4
+  }
+}
