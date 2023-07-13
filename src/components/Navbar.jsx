@@ -22,7 +22,7 @@ const Navbar = () => {
 
     return ( 
         <>
-            <nav className="md:px-24 px-4 md:py-6 py-5 top-0 left-0 sticky z-[0] bg-green-600 shadow-xl"> 
+            <nav className="md:px-24 px-4 md:py-6 py-5 top-0 left-0 sticky z-[100] bg-green-600 shadow-xl"> 
                 <div className="md:flex justify-between items-center">
                     <div className="flex justify-between items-center">
                         <Link to='/' className="flex items-center justify-center    ">
@@ -49,7 +49,7 @@ const Navbar = () => {
                 </div>
 
                 {/* mobile-version */}
-                <div className={`${open ? "left-0 " : "left-[-100%]"} z-[100] sm:hidden absolute top-0 right-0  space-y-8 py-6 px-8 w-[80%] min-h-full duration-300 ease-in-out bg-green-700 `}>
+                <div className={`${open ? "left-0 " : "left-[-100%]"} z-[100] sm:hidden absolute top-0 right-0 space-y-8 py-6 px-8 w-[80%] min-h-screen duration-300 ease-in-out bg-green-700 opacity-90`}>
                     <ul className="flex flex-col text-base font-medium space-y-8 text-gray-200">
                         {navLinks.map((nav) => (
                             <li key={nav.id} onClick={() => setOpen((prev) => !prev)} className="navlink md:mx-4 mx-2 md:my-0 my-2">
