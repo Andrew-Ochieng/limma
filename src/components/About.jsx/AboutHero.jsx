@@ -1,7 +1,9 @@
+import heroImg from "../../assets/shop-banner.jpg"
+
 const AboutHero = () => {
     return ( 
         <>
-            <div className="hero min-h-max " style={{backgroundImage: 'url(./about-us.jpg)'}}>
+            <div className="hero min-h-max " style={{backgroundImage: `url(${heroImg})`}}>
                 <div className="hero-overlay bg-opacity-60 md:py-48 py-24"></div>
                     <div className="hero-content text-center text-neutral-content">
                         <div className="max-w-md">

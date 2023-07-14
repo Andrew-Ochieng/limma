@@ -1,6 +1,6 @@
-import icon1 from "../../public/icons/vegetable.png"
-import icon2 from "../../public/icons/leaf.png"
-import icon3 from "../../public/icons/organic.png"
+import icon1 from "../assets/icons/vegetable.png"
+import icon2 from "../assets/icons/leaf.png"
+import icon3 from "../assets/icons/organic.png"
 
 const choices = [
     {

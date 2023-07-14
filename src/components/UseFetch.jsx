@@ -16,7 +16,7 @@ const UseFetch = (url) => {
                 setLoading(false)
                 setError(false)
             } else {
-               console.error('Request made was a bad request. Check agein!') 
+               console.error('Request made was a bad request. Check again!') 
             }
         })
         .catch((err) => {
