@@ -1,9 +1,10 @@
+import aboutImg from "../../assets/rider-banner.jpg"
 const AboutDetails = () => {
     return ( 
         <>
             <div className="grid md:grid-cols-2 md:gap-16 gap-8">
                 <div>
-                    <img src="./rider-banner.jpg" alt="" />
+                    <img src={aboutImg} alt="" />
                 </div>
                 <div className="space-y-4 ">
                     <h3 className="lg:text-5xl md:text-4xl text-3xl font-black text-gray-800">Facilitating quality control in agriculture</h3>

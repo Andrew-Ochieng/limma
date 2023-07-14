@@ -17,8 +17,7 @@ const Products = ({products, error, loading}) => {
     console.log(categoryItems)
 
 
-
-    console.log(filteredProducts)
+    // console.log(filteredProducts)
 
     return ( 
         <>
