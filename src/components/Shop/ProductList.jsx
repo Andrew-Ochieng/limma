@@ -15,7 +15,7 @@ const ProductList = ({filteredProducts}) => {
                                 <p className='mt-2 card-content-price'>Ksh {product.price * 100}</p>
                             </Link>
                         </div>
-                        <button className="card-btn">
+                        <button className="card-btn mt-2">
                             Add to cart 
                         </button>
                     </div>

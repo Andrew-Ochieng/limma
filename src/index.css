@@ -41,7 +41,7 @@
   }
 
   .card-container {
-    @apply grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gap-4 px-4
+    @apply grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-12 gap-4 my-8
   }
 
   .card {
@@ -65,6 +65,10 @@
   }
 
   .card-btn {
-    @apply btn-error mt-2 py-2 px-3 rounded-md font-medium text-sm text-gray-800 uppercase
+    @apply btn-error py-2 px-3 rounded-md font-medium text-sm text-gray-800 uppercase
+  }
+
+  .category-btn {
+    @apply md:mx-2 mx-1 md:p-2 p-1 bg-green-400 rounded-md md:text-base text-xs
   }
 }

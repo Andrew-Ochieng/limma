@@ -11,13 +11,13 @@ const Navbar = () => {
         {id: 1, name: "Home", route: "/"},
         {id: 2, name: "Shop", route: "/shop"},
         {id: 3, name: "About", route: "/about"},
+        {id: 4, name: "Login", route: "/login"},
+        {id: 5, name: "Signup", route: "/signup"},
         // {id: 1, name: "Profile", route: "/farmersprofile"},
         // {id: 2, name:"My Crops", route: "/mycrops"},
         // {id: 3, name: "My records", route: "/myrecords"},
         // {id: 5, name: "Farmers Market", route: "/farmproduce"},
         // {id: 6, name: "Farming History", route: "/farminghistory"},
-        {id: 7, name: "Login", route: "/farmerlogin"},
-        {id: 8, name: "Signup", route: "/farmersignup"},
     ]
 
     return ( 

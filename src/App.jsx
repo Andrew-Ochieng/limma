@@ -28,11 +28,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={ <Home products={products} /> } />
-          <Route path='/shop' element={ <Shop products={products} eroor={error} loading={loading} /> } />
+          <Route path='/shop' element={ <Shop products={products} error={error} loading={loading} /> } />
           <Route path='/products/:id' element={ <ProductDetails products={products} /> } />
           {/* <Route path='/cart' element={ <Cart /> } /> */}
           <Route path='/about' element={ <About /> } />
-          <Route path='/farmerlogin' element={ <Login /> } />
+          <Route path='/login' element={ <Login /> } />
           <Route path='/signup' element={ <Signup /> } />
           <Route path='/profile' element={ <Profile /> } />
           <Route path='/crops' element={ <Crops /> } />
