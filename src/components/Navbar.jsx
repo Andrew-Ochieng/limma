@@ -38,7 +38,7 @@ const Navbar = () => {
                     <div className='md:flex hidden text-green-100'>
                         <ul className="md:flex items-center font-medium lg:space-x-6 md:space-x-4">
                             {navLinks.map((nav) => (
-                                <li key={nav.id} className="navlink md:my-0 my-2 md:text-lg">
+                                <li key={nav.id} className="navlink md:my-0 my-2 uppercase">
                                     <Link to={nav.route}>
                                         {nav.name}
                                     </Link>
@@ -52,7 +52,7 @@ const Navbar = () => {
                 <div className={`${open ? "left-0 " : "left-[-100%]"} z-[100] sm:hidden absolute top-0 right-0 space-y-8 py-6 px-8 w-[80%] min-h-screen duration-300 ease-in-out bg-green-700 opacity-90`}>
                     <ul className="flex flex-col text-base font-medium space-y-8 text-gray-200">
                         {navLinks.map((nav) => (
-                            <li key={nav.id} onClick={() => setOpen((prev) => !prev)} className="navlink md:mx-4 mx-2 md:my-0 my-2">
+                            <li key={nav.id} onClick={() => setOpen((prev) => !prev)} className="navlink md:mx-4 mx-2 md:my-0 my-2 uppercase">
                                 <Link to={nav.route}>
                                     {nav.name}
                                 </Link>

@@ -4,6 +4,10 @@
 
 
 @layer components {
+  .section-title {
+    @apply lg:text-4xl md:text-3xl text-2xl font-bold mb-5
+  }
+
   .container-title {
       @apply font-semibold md:text-2xl text-xl text-gray-800
   }
@@ -16,6 +20,10 @@
       @apply flex flex-col items-start space-y-4
   }
 
+  .form-input {
+    @apply border border-gray-300 rounded-lg py-2 pl-2 pr-3 outline-none focus-within:border-green-500
+  }
+
   .profile-container {
       @apply grid grid-cols-1 md:gap-16 gap-8 
   }
@@ -23,10 +31,6 @@
   .profile-card {
       @apply grid md:grid-cols-2 bg-gradient-to-r from-green-300 to-green-400  md:p-8 p-4 rounded-xl
   }
-
-  /* .profile-image {
-      @apply  
-  } */
 
   .sub-title {
     @apply font-bold text-gray-700 md:text-xl text-lg
