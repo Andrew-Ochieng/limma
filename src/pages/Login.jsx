@@ -16,7 +16,6 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform login logic with formData
     console.log(formData);
     // Reset form
     setFormData({

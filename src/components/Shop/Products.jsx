@@ -5,20 +5,26 @@ import { FaBars } from "react-icons/fa"
 
 const Products = ({products, error, loading}) => {
     const [search, setSearch] = useState('')
-    const [category, setCategory] = useState('all')
+    const [category, setCategory] = useState('')
 
     const handleSearch = (e) => {
         e.preventDefault()
         setSearch(e.target.value)
     }
 
+    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(search.toLowerCase()))
+
+
     const handleSelect = (e) => {
         setCategory(e.target.value)
         console.log(category)
     }
 
-    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(search.toLowerCase()))
-
+    if (category) {
+        const newFilters = filteredProducts.filter((product) => product.category == category)
+        console.log(newFilters)
+    } 
+    
 
     // console.log(filteredProducts)
 
@@ -33,14 +39,14 @@ const Products = ({products, error, loading}) => {
                         </div>
                         <form>
                             <select 
-                                className="form-input" 
+                                className="form-input focus-within:border-red-500" 
                                 value={category}
                                 onChange={handleSelect}
                                 >
-                                <option value="all">All</option>
-                                <option value="men's clothing">Men's clothing</option>
-                                <option value="women's clothing">Women's clothing</option>
-                                <option value="jewelery">Jewelery</option>
+                                    <option value="">Select Category</option>
+                                    <option value="men's clothing">Men's clothing</option>
+                                    <option value="women's clothing">Women's clothing</option>
+                                    <option value="jewelery">Jewelery</option>
                                 <option value="electronics">Electronics</option>
                             </select>
                         </form>

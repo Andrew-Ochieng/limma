@@ -7,6 +7,7 @@ import { MdOutlineKeyboardArrowUp, MdOutlineKeyboardArrowDown } from "react-icon
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
+    const [dropdown, setDropdown] = useState(false)
 
     const navLinks = [
         {id: 1, name: "Home", route: "/"},
@@ -46,11 +47,11 @@ const Navbar = () => {
                                 </li>
                             ))}
                             <div className="relative ">
-                                <button className="uppercase flex items-center" onClick={() => setOpen(!open)}>
+                                <button className="uppercase flex items-center" onClick={() => setDropdown(!dropdown)}>
                                     Account
-                                    {open ? <MdOutlineKeyboardArrowUp className="text-3xl" /> : <MdOutlineKeyboardArrowDown className="text-3xl" />}
+                                    {dropdown ? <MdOutlineKeyboardArrowUp className="text-3xl" /> : <MdOutlineKeyboardArrowDown className="text-3xl" />}
                                 </button>
-                                {open ? (
+                                {dropdown ? (
                                     <ul className="menu absolute p-0 w-24 rounded-md bg-white text-green-600 shadow-md text-left">
                                         <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-t-md">
                                             <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/login'>Login</Link>
@@ -76,18 +77,18 @@ const Navbar = () => {
                             </li>
                         ))}
                         <div className="relative ">
-                        <button className="uppercase flex items-center" onClick={() => setOpen(!open)}>
-                            Account
-                            {open ? <MdOutlineKeyboardArrowUp className="text-3xl" /> : <MdOutlineKeyboardArrowDown className="text-3xl" />}
-                        </button>
-                            {!open ? (
+                            <button className="uppercase flex items-center" onClick={() => setDropdown(!dropdown)}>
+                                Account
+                                {dropdown ? <MdOutlineKeyboardArrowUp className="text-3xl" /> : <MdOutlineKeyboardArrowDown className="text-3xl" />}
+                            </button>
+                            {dropdown ? (
                                 <ul className="menu absolute p-0 w-24 rounded-md bg-white text-green-600 shadow-md text-left">
-                                <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-t-md">
-                                    <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/login'>Login</Link>
-                                </li>
-                                <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-b-md">
-                                    <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/signup'>Signup</Link>
-                                </li>
+                                    <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-t-md">
+                                        <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/login'>Login</Link>
+                                    </li>
+                                    <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-b-md">
+                                        <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/signup'>Signup</Link>
+                                    </li>
                                 </ul>
                             ) : null}
                         </div>

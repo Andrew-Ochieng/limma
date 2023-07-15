@@ -9,8 +9,8 @@ const Signup = () => {
   const [ward, setWard] = useState('');
   const [location, setLocation] = useState('');
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
     switch (name) {
       case 'email':
         setEmail(value);
@@ -35,8 +35,8 @@ const Signup = () => {
     }
   };
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
       try {
         const response = await fetch('your-signup-api-url', {
           method: 'POST',
