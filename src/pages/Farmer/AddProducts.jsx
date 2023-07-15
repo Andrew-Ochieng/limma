@@ -3,15 +3,8 @@ import { useState } from 'react';
 const AddProducts = ({ addProduct }) => {
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
+  const [productDescription, setProductDescription] = useState('');
   const [productImage, setProductImage] = useState(null);
-
-  const handleProductNameChange = (event) => {
-    setProductName(event.target.value);
-  };
-
-  const handleProductPriceChange = (event) => {
-    setProductPrice(event.target.value);
-  };
 
   const handleProductImageChange = (event) => {
     const imageFile = event.target.files[0];
@@ -19,12 +12,13 @@ const AddProducts = ({ addProduct }) => {
     setProductImage(imageURL);
   };
 
-  const handlePostProduct = (event) => {
-    event.preventDefault();
+  const handlePostProduct = (e) => {
+    e.preventDefault();
     if (productName && productPrice && productImage) {
       const newProduct = {
         name: productName,
         price: Number(productPrice),
+        description: productDescription,
         image: productImage,
       };
       addProduct(newProduct);
@@ -35,7 +29,7 @@ const AddProducts = ({ addProduct }) => {
   };
 
   return (
-    <div className='md:m-16 my-8 mx-4'>
+    <div className='md:p-16 py-8 px-4'>
       <h2 className='container-title md:text-center md:mb-8 mb-4'>Sell Your Farm Produce</h2>
       <form className='form-container' onSubmit={handlePostProduct}>
         <div>
@@ -45,9 +39,9 @@ const AddProducts = ({ addProduct }) => {
           <input 
               type="text" 
               value={productName} 
-              onChange={handleProductNameChange} 
+              onChange={(e) => setProductName(e.target.value)} 
               required 
-              className='input input-success'
+              className='form-input'
             />
         </div>
         <div>
@@ -57,9 +51,21 @@ const AddProducts = ({ addProduct }) => {
           <input 
               type="number" 
               value={productPrice} 
-              onChange={handleProductPriceChange} 
+              onChange={(e) => setProductPrice(e.target.value)} 
               required 
-              className='input input-success'
+              className='form-input'
+          />
+        </div>
+        <div>
+          <label className="label">
+            Product Description:
+          </label>
+          <input 
+              type="text" 
+              value={productDescription} 
+              onChange={(e) => setProductDescription(e.target.value)} 
+              required 
+              className='form-input w-auto'
           />
         </div>
         <div>
@@ -71,7 +77,7 @@ const AddProducts = ({ addProduct }) => {
               accept="image/*" 
               onChange={handleProductImageChange} 
               required 
-              className='input input-success'
+              className='form-input'
           />
         </div>
         {productImage && <img src={productImage} alt="Product" width="150" />}
