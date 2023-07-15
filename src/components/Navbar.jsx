@@ -11,8 +11,8 @@ const Navbar = () => {
         {id: 1, name: "Home", route: "/"},
         {id: 2, name: "Shop", route: "/shop"},
         {id: 3, name: "About", route: "/about"},
-        {id: 4, name: "Login", route: "/login"},
-        {id: 5, name: "Signup", route: "/signup"},
+        // {id: 4, name: "Login", route: "/login"},
+        // {id: 5, name: "Signup", route: "/signup"},
         // {id: 1, name: "Profile", route: "/farmersprofile"},
         // {id: 2, name:"My Crops", route: "/mycrops"},
         // {id: 3, name: "My records", route: "/myrecords"},
@@ -36,14 +36,27 @@ const Navbar = () => {
                     </div>
 
                     <div className='md:flex hidden text-green-100'>
-                        <ul className="md:flex items-center font-medium lg:space-x-6 md:space-x-4">
+                        <ul className="md:flex items-center font-medium lg:space-x-6 md:space-x-4 uppercase">
                             {navLinks.map((nav) => (
-                                <li key={nav.id} className="navlink md:my-0 my-2 md:text-lg">
+                                <li key={nav.id} className="navlink md:my-0 my-2 ">
                                     <Link to={nav.route}>
                                         {nav.name}
                                     </Link>
                                 </li>
                             ))}
+                            <div className="relative ">
+                                <button className="uppercase" onClick={() => setOpen(!open)}>Account</button>
+                                {open ? (
+                                    <ul className="menu absolute p-0 w-24 rounded-md bg-white text-green-600 shadow-md text-left">
+                                    <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-t-md">
+                                        <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/login'>Login</Link>
+                                    </li>
+                                    <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-b-md">
+                                        <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/signup'>Signup</Link>
+                                    </li>
+                                    </ul>
+                                ) : null}
+                            </div>
                         </ul>
                     </div>
                 </div>
@@ -52,12 +65,25 @@ const Navbar = () => {
                 <div className={`${open ? "left-0 " : "left-[-100%]"} z-[100] sm:hidden absolute top-0 right-0 space-y-8 py-6 px-8 w-[80%] min-h-screen duration-300 ease-in-out bg-green-700 opacity-90`}>
                     <ul className="flex flex-col text-base font-medium space-y-8 text-gray-200">
                         {navLinks.map((nav) => (
-                            <li key={nav.id} onClick={() => setOpen((prev) => !prev)} className="navlink md:mx-4 mx-2 md:my-0 my-2">
+                            <li key={nav.id} onClick={() => setOpen((prev) => !prev)} className="navlink md:mx-4 mx-2 md:my-0 my-2 uppercase">
                                 <Link to={nav.route}>
                                     {nav.name}
                                 </Link>
                             </li>
                         ))}
+                        <div className="relative ">
+                            <button className="uppercase" onClick={() => setOpen(!open)}>Account</button>
+                            {!open ? (
+                                <ul className="menu absolute p-0 w-24 rounded-md bg-white text-green-600 shadow-md text-left">
+                                <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-t-md">
+                                    <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/login'>Login</Link>
+                                </li>
+                                <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-b-md">
+                                    <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/signup'>Signup</Link>
+                                </li>
+                                </ul>
+                            ) : null}
+                        </div>
                     </ul>
                 </div>
             </nav>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,9 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='form-container'>
+    <div className='flex flex-col justify-center items-center md:my-16'>
+      <h3 className='section-title text-green-600'>Welcome Back</h3>
+      <form onSubmit={handleSubmit} className='form-container'>
         <div>
             <label className='label'>
                 Email:
@@ -33,7 +36,7 @@ const Login = () => {
             <input
                 type="email"
                 name="email"
-                className='input input-success'
+                className='form-input'
                 value={formData.email}
                 onChange={handleChange}
                 />
@@ -43,7 +46,7 @@ const Login = () => {
                 Password:
             </label>
             <input
-                    className='input input-success'
+                    className='form-input'
                     type="password"
                     name="password"
                     value={formData.password}
@@ -51,12 +54,19 @@ const Login = () => {
                 />
         </div>
         <button
-            className='btn btn-success ' 
+            className='btn btn-success w-full' 
             type="submit"
             >
                 Log In
         </button>
-    </form>
+        <p>
+          Not yet registed? 
+          <Link to='/signup' className='ml-1 text-red-500 font-medium'>
+            Signup
+          </Link>
+        </p>
+      </form>
+    </div>
   );
 };
 

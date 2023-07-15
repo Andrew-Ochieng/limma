@@ -1,14 +1,13 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
   const [county, setCounty] = useState('');
   const [ward, setWard] = useState('');
   const [location, setLocation] = useState('');
-  const [isSignUp, setIsSignUp] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -21,9 +20,6 @@ const Signup = () => {
         break;
       case 'name':
         setName(value);
-        break;
-      case 'address':
-        setAddress(value);
         break;
       case 'county':
         setCounty(value);
@@ -41,7 +37,6 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    if (isSignUp) {
       try {
         const response = await fetch('your-signup-api-url', {
           method: 'POST',
@@ -49,76 +44,23 @@ const Signup = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            email,
-            password,
-            name,
-            address,
-            county,
-            ward,
-            location,
+            email, password, name, address, county, ward, location
           }),
         });
 
         // Handle the response from the signup API
+        response.ok ? console.log('Sign up successful') : console.log('Sign up failed')
 
-        if (response.ok) {
-          console.log('Sign up successful');
-          // Redirect or perform other actions after successful signup
-        } else {
-          console.log('Sign up failed');
-          // Handle signup failure, display error message, etc.
-        }
       } catch (error) {
         console.log('Sign up error:', error);
         // Handle signup error, display error message, etc.
       }
-    } else {
-      try {
-        const response = await fetch('your-login-api-url', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        });
-
-        // Handle the response from the login API
-
-        if (response.ok) {
-          console.log('Login successful');
-          // Redirect or perform other actions after successful login
-        } else {
-          console.log('Login failed');
-          // Handle login failure, display error message, etc.
-        }
-      } catch (error) {
-        console.log('Login error:', error);
-        // Handle login error, display error message, etc.
-      }
-    }
-
-    // Reset form
-    setEmail('');
-    setPassword('');
-    setName('');
-    setAddress('');
-    setCounty('');
-    setWard('');
-    setLocation('');
-  };
-
-  const toggleForm = () => {
-    setIsSignUp((prevSignUp) => !prevSignUp);
-  };
+    } 
 
   return (
-    <div>
-      <h2 className='container-title'>{isSignUp ? 'Sign Up' : 'Login'}</h2>
+    <div className='flex flex-col items-center md:my-16 my-8'>
+      <h2 className='container-title'>Sign Up</h2>
       <form onSubmit={handleFormSubmit}>
-        {isSignUp && (
           <div>
             <div>
               <label className='label'>
@@ -128,20 +70,20 @@ const Signup = () => {
                 type="text" 
                 name="name" 
                 value={name} 
-                className='input input-success'
+                className='form-input'
                 onChange={handleInputChange} 
                 required 
               />
             </div>
             <div>
               <label className='label'>
-                Address:
+                Email:
               </label>
               <input 
-                type="text" 
-                name="address" 
-                value={address} 
-                className='input input-success'
+                type="email" 
+                name="email" 
+                value={email} 
+                className='form-input'
                 onChange={handleInputChange} 
                 required 
               />
@@ -154,7 +96,7 @@ const Signup = () => {
                 type="text" 
                 name="county" 
                 value={county} 
-                className='input input-success'
+                className='form-input'
                 onChange={handleInputChange} 
                 required 
               />
@@ -167,7 +109,7 @@ const Signup = () => {
                 type="text" 
                 name="ward" 
                 value={ward} 
-                className='input input-success'
+                className='form-input'
                 onChange={handleInputChange} 
                 required 
               />
@@ -180,55 +122,27 @@ const Signup = () => {
                 type="text" 
                 name="location" 
                 value={location} 
-                className='input input-success'
+                className='form-input'
                 onChange={handleInputChange} 
                 required 
               />
             </div>
           </div>
-        )}
-          <div>
-              <label className='label'>
-                  Email:
-              </label>
-              <input
-                  type="email"
-                  name="email"
-                  className='input input-success'
-                  value={email}
-                  onChange={handleInputChange}
-                  />
-          </div>
-          <div>
-              <label className='label'>
-                  Password:
-              </label>
-              <input
-                      className='input input-success'
-                      type="password"
-                      name="password"
-                      value={password}
-                      onChange={handleInputChange}
-                  />
-          </div>
 
         <button 
           type="submit"
-          className='btn btn-success mt-4'
+          className='btn btn-success mt-4 w-full'
           >
-            {isSignUp ? 'Sign Up' : 'Login'}
+            Signup
           </button>
       </form>
       <p  
-        className='md:text-lg font-semibold'
+        className=' mt-4'
         >
-        {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
-        <button 
-          onClick={toggleForm}
-          className='btn btn-error text-white'
-          >
-            {isSignUp ? 'Login' : 'Sign Up'}
-        </button>
+          Already have an account?
+          <Link to='/signup' className='ml-1 text-red-500 font-medium'>
+            Signup
+          </Link>
       </p>
     </div>
   );
