@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaRegTimesCircle } from "react-icons/fa"
+// import { BsCart2 } from "react-icons/bs"
+import { BiLogIn } from "react-icons/bi"
+import { RxDividerVertical } from "react-icons/rx"
 import { HiMenuAlt3 } from "react-icons/hi"
-import { MdOutlineKeyboardArrowUp, MdOutlineKeyboardArrowDown } from "react-icons/md"
+import { MdOutlineKeyboardArrowUp, MdOutlineKeyboardArrowDown, MdOutlineShoppingCart } from "react-icons/md"
+import { useSelector } from "react-redux";
 
 
 const Navbar = () => {
@@ -21,6 +25,8 @@ const Navbar = () => {
         // {id: 5, name: "Farmers Market", route: "/farmproduce"},
         // {id: 6, name: "Farming History", route: "/farminghistory"},
     ]
+
+    const cart = useSelector((state) => state.cart)
 
     return ( 
         <>
@@ -46,22 +52,19 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                             ))}
-                            <div className="relative ">
-                                <button className="uppercase flex items-center" onClick={() => setDropdown(!dropdown)}>
-                                    Account
-                                    {dropdown ? <MdOutlineKeyboardArrowUp className="text-3xl" /> : <MdOutlineKeyboardArrowDown className="text-3xl" />}
-                                </button>
-                                {dropdown ? (
-                                    <ul className="menu absolute p-0 w-24 rounded-md bg-white text-green-600 shadow-md text-left">
-                                        <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-t-md">
-                                            <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/login'>Login</Link>
-                                        </li>
-                                        <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-b-md">
-                                            <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/signup'>Signup</Link>
-                                        </li>
-                                    </ul>
-                                ) : null}
-                            </div>
+                            <li className="sm:flex hidden items-center text-gray-200">
+                                <Link className="flex relative" to='/cart'>
+                                    <MdOutlineShoppingCart className="text-xl" />
+                                    <p className="text-sm text-gray-800">{(cart.length)}</p>
+                                </Link>
+                                <RxDividerVertical className="md:text-3xl" />
+                                <Link to='/login' className="flex items-center border border-yellow-300 p-1 rounded-lg text-sm">
+                                    <BiLogIn className="mr-2 text-lg" />
+                                    Login
+                                    {/* <RxDividerVertical className="mx-1" />
+                                    Signup */}
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

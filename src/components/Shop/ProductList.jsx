@@ -1,7 +1,11 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-// import { CartContext } from "./Cart";
+import { addToCart } from "../../redux/Cart/cartSlice";
+
 
 const ProductList = ({filteredProducts}) => {
+    const dispatch = useDispatch()
+    // console.log(filteredProducts)
     return ( 
         <>
             <div className='card-container'>
@@ -15,7 +19,9 @@ const ProductList = ({filteredProducts}) => {
                                 <p className='mt-2 card-content-price'>Ksh {product.price * 100}</p>
                             </Link>
                         </div>
-                        <button className="card-btn mt-2">
+                        <button 
+                            className="card-btn mt-2"
+                            onClick={() => dispatch(addToCart(product))}>
                             Add to cart 
                         </button>
                     </div>
