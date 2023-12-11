@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import CartItem from "../components/Shop/CartItem";
 
-const Cart = ({products}) => {
+const Cart = () => {
     const cart = useSelector((state) => state.cart)
     
     const getTotal = () => {
@@ -13,7 +13,6 @@ const Cart = ({products}) => {
         });
         return { totalQuantity, totalPrice }
     }
-    
     
     return ( 
         <>

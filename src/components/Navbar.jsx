@@ -16,14 +16,7 @@ const Navbar = () => {
     const navLinks = [
         {id: 1, name: "Home", route: "/"},
         {id: 2, name: "Shop", route: "/shop"},
-        {id: 3, name: "About", route: "/about"},
-        // {id: 4, name: "Login", route: "/login"},
-        // {id: 5, name: "Signup", route: "/signup"},
-        // {id: 1, name: "Profile", route: "/farmersprofile"},
-        // {id: 2, name:"My Crops", route: "/mycrops"},
-        // {id: 3, name: "My records", route: "/myrecords"},
-        // {id: 5, name: "Farmers Market", route: "/farmproduce"},
-        // {id: 6, name: "Farming History", route: "/farminghistory"},
+        {id: 3, name: "About", route: "/about"}
     ]
 
     const cart = useSelector((state) => state.cart)
@@ -71,30 +64,32 @@ const Navbar = () => {
 
                 {/* mobile-version */}
                 <div className={`${open ? "left-0 " : "left-[-100%]"} z-[100] sm:hidden absolute top-0 right-0 space-y-8 py-6 px-8 w-[80%] min-h-screen duration-300 ease-in-out bg-green-700 opacity-90`}>
-                    <ul className="flex flex-col text-base font-medium space-y-8 text-gray-200">
+                    <ul className="flex flex-col text-base font-medium space-y-4 text-gray-200">
                         {navLinks.map((nav) => (
-                            <li key={nav.id} onClick={() => setOpen((prev) => !prev)} className="navlink md:mx-4 mx-2 md:my-0 my-2 uppercase">
+                            <li key={nav.id} onClick={() => setOpen((prev) => !prev)} className="navlink md:my-0 my-2 uppercase">
                                 <Link to={nav.route}>
                                     {nav.name}
                                 </Link>
                             </li>
                         ))}
-                        <div className="relative ">
-                            <button className="uppercase flex items-center" onClick={() => setDropdown(!dropdown)}>
-                                Account
-                                {dropdown ? <MdOutlineKeyboardArrowUp className="text-3xl" /> : <MdOutlineKeyboardArrowDown className="text-3xl" />}
-                            </button>
-                            {dropdown ? (
-                                <ul className="menu absolute p-0 w-24 rounded-md bg-white text-green-600 shadow-md text-left">
-                                    <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-t-md">
-                                        <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/login'>Login</Link>
-                                    </li>
-                                    <li className="hover:bg-green-200 text-gray-700 tracking-wide rounded-b-md">
-                                        <Link className="w-[100%] text-inherit p-2 cursor-pointer bg-none" to='/signup'>Signup</Link>
-                                    </li>
-                                </ul>
-                            ) : null}
-                        </div>
+                        <li className="flex flex-col  items-start space-y-4 text-gray-200">
+                            <Link 
+                                className="flex relative" 
+                                to='/cart' 
+                                onClick={() => setOpen((prev) => !prev)}
+                            >
+                                <MdOutlineShoppingCart className="text-xl" />
+                                <p className="text-sm text-gray-800">{(cart.length)}</p>
+                            </Link>
+                            <Link 
+                                to='/login' 
+                                onClick={() => setOpen((prev) => !prev)}
+                                className="flex items-center border border-yellow-300 p-1 rounded-lg text-sm"
+                            >
+                                <BiLogIn className="mr-2 text-lg" />
+                                Login
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </nav>
