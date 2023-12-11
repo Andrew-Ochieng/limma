@@ -14,13 +14,11 @@ import Footer from './components/Footer'
 import UseFetch from './components/UseFetch'
 import './App.css'
 import ProductDetails from './components/Shop/ProductDetails'
-// import Cart from './components/Shop/Cart'
+import Cart from './pages/Cart'
 
 function App() {
-  // const {data: products, loading, error} = UseFetch("https://dummyjson.com/products")
   const {data: products, loading, error} = UseFetch("https://fakestoreapi.com/products")
-  // const category = products.map((item) => item.category)
-  // console.log(category)
+
 
   return (
     <>
@@ -30,7 +28,7 @@ function App() {
           <Route path='/' element={ <Home products={products} /> } />
           <Route path='/shop' element={ <Shop products={products} error={error} loading={loading} /> } />
           <Route path='/products/:id' element={ <ProductDetails products={products} /> } />
-          {/* <Route path='/cart' element={ <Cart /> } /> */}
+          <Route path='/cart' element={ <Cart products={products} /> } />
           <Route path='/about' element={ <About /> } />
           <Route path='/login' element={ <Login /> } />
           <Route path='/signup' element={ <Signup /> } />

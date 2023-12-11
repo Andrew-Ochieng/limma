@@ -1,18 +1,21 @@
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { addToCart } from "../../redux/Cart/cartSlice";
 
 const ProductDetails = ({products}) => {
     const { id } = useParams()
     const paramId = Number(id)
 
-    console.log(products)
     let product = {}
     if (product) {
         let arr = products.filter((item) => item.id === paramId)
         product = arr[0]
-        console.log(typeof paramId)
     } else {
         product = {}
     }  
+
+    // state-management
+    const dispatch = useDispatch()
 
     return ( 
         <>
@@ -31,11 +34,10 @@ const ProductDetails = ({products}) => {
                                 <span className="ml-1">{product.category}</span>
                             </p>
                             <div className="flex justify-start items-center">
-                                <div className="flex items-center rounded-lg border-2 border-success">
-                                    <label htmlFor="pcs" className="btn btn-success rounded-none">Pcs</label>
-                                    <input type="number" min='0' className="p-2 w-16 outline-none" />
-                                </div>
-                                <button className="btn btn-error ml-6">
+                                <button 
+                                    className="btn btn-error"
+                                    onClick={() => dispatch(addToCart(product.id))}
+                                    >
                                     Add to cart
                                 </button>
                             </div>
